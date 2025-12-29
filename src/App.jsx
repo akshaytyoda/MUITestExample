@@ -1,4 +1,4 @@
-import { Button, Container, Typography } from '@mui/material'
+import { Button, Container, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
 
 function App() {
@@ -7,9 +7,11 @@ function App() {
   const handleClick = () => {
     setCount((prev) => prev + 1)
   }
+  const [value, setValue] = useState('')
 
   return (
-    <Container sx={{ mt: 4 }}>
+   <>
+   <Container sx={{ mt: 4 }}>
       <Typography variant="h5" gutterBottom>
         MUI Button Test
       </Typography>
@@ -23,7 +25,28 @@ function App() {
           Hi {count}
         </Typography>
       )}
+
+      
+
+
+      <Typography variant="h6" gutterBottom>
+        Enter your name
+      </Typography>
+
+      <TextField
+        label="Name"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Type here"
+      />
+
+      {value && (
+        <Typography sx={{ mt: 2 }}>
+          Hello {value}
+        </Typography>
+      )}
     </Container>
+    </>
   )
 }
 
